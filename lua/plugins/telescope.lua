@@ -1,5 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
+    name = "telescope",
 
     dependencies = {
         "nvim-lua/plenary.nvim",
@@ -7,20 +8,17 @@ return {
     },
 
     config = function()
-        local builtin = require('telescope.builtin')
         local wk = require("which-key")
 
         wk.register({
-            ["<leader>ff"] = { builtin.find_files, "File" },
-            ["<leader>ft"] = { builtin.live_grep , "Text" },
-            ["<leader>fb"] = { builtin.buffers   , "Open buffers" },
+            ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "File" },
+            ["<leader>ft"] = { "<cmd>Telescope live_grep<cr>", "Text" },
+            ["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Open buffers" },
 
             ["<Leader>fF"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
 
-            ["<leader>ht"] = { builtin.help_tags , "Help tags" },
-
+            ["<leader>ht"] = { "<cmd>Telescope help_tags<cr>", "Help tags" },
         })
-
     end
-
 }
+

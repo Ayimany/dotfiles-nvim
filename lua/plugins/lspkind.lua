@@ -1,5 +1,6 @@
 return {
     "onsails/lspkind.nvim",
+    name = "lspkind",
 
     config = function()
         local lspkind = require("lspkind")
@@ -33,6 +34,5 @@ return {
                 TypeParameter = "",
             },
         })
-
     end
 }

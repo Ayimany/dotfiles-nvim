@@ -1,5 +1,6 @@
 return {
     "folke/which-key.nvim",
+    name = "which-key",
     event = "VeryLazy",
 
     init = function()
@@ -28,8 +29,11 @@ return {
             ["<leader>s"] = { name = "+Symbol..." },
             ["<leader>h"] = { name = "+Help..." },
             ["<leader>d"] = { name = "+Diagnostic..." },
-            ["<leader>f"] = { name = "+Find..."},
+            ["<leader>f"] = { name = "+Find..." },
             ["<leader>o"] = { name = "+Operate..." },
+            ["<leader>F"] = { name = "+File..." },
+            ["<leader>b"] = { name = "+Buffer..." },
         })
     end
 }
+

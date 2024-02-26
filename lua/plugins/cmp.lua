@@ -1,5 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
+    name = "cmp",
 
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
@@ -29,19 +30,22 @@ return {
                 },
             },
 
-            view = {                                                        
-              entries = {name = 'custom', selection_order = 'near_cursor' } 
-            },                                                               
+            view = {
+                entries = {
+                    name = "custom",
+                    selection_order = "near_cursor"
+                }
+            },
 
             formatting = {
                 fields = { "kind", "abbr", "menu" },
                 format = function(entry, vim_item)
-                    local kind = require("lspkind")
-                                    .cmp_format({
-                                        mode = "symbol_text",
-                                        maxwidth = 50,
-                                        with_text = false
-                                    })(entry, vim_item)
+                    local kind    = require("lspkind")
+                        .cmp_format({
+                            mode = "symbol_text",
+                            maxwidth = 50,
+                            with_text = false
+                        })(entry, vim_item)
 
                     local strings = vim.split(kind.kind, "%s", { trimempty = true })
                     kind.kind     = " " .. (strings[1] or "") .. " "
@@ -61,74 +65,73 @@ return {
                 ["<CR>"]      = cmp.mapping.confirm({ select = true })
             }),
 
-            sources = cmp.config.sources({{ name = "nvim_lsp" },
-                                          { name = "vsnip"    },
-                                          { name = "buffer"   }})
+            sources = cmp.config.sources({ { name = "nvim_lsp" },
+                { name = "vsnip" },
+                { name = "buffer" } })
 
         })
 
         cmp.setup.filetype("gitcommit", {
-            sources = cmp.config.sources({{ name = "git"    }},
-                                         {{ name = "buffer" }})
+            sources = cmp.config.sources({ { name = "git" } },
+                { { name = "buffer" } })
         })
 
         cmp.setup.cmdline({ "/", "?" }, {
             mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({{ name = "buffer" }})
+            sources = cmp.config.sources({ { name = "buffer" } })
         })
 
         cmp.setup.cmdline({ ":" }, {
             mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({{ name = "path"    }},
-                                         {{ name = "cmdline" }})
+            sources = cmp.config.sources({ { name = "path" } },
+                { { name = "cmdline" } })
         })
 
         --------------------------------
 
         local c = require("catppuccin.palettes").get_palette("mocha")
 
-        vim.api.nvim_set_hl(0, "PmenuThumb"              , { fg = "NONE"   , bg = c.base })
-        vim.api.nvim_set_hl(0, "PmenuSbar"               , { fg = "NONE"   , bg = "NONE" })
+        vim.api.nvim_set_hl(0, "PmenuThumb", { fg = "NONE", bg = c.base })
+        vim.api.nvim_set_hl(0, "PmenuSbar", { fg = "NONE", bg = "NONE" })
 
-        vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated"   , { fg = c.base     , bg = "NONE", strikethrough = true })
-        vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy"   , { fg = c.rosewater, bg = "NONE", bold          = true })
-        vim.api.nvim_set_hl(0, "CmpItemAbbrMatch"        , { fg = c.rosewater, bg = "NONE", bold          = true })
-        vim.api.nvim_set_hl(0, "CmpItemAbbrDefault"      , { fg = c.rosewater, bg = "NONE", bold          = true })
-        vim.api.nvim_set_hl(0, "CmpItemAbbr"             , { fg = c.subtext0 , bg = "NONE",                      })
+        vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = c.base, bg = "NONE", strikethrough = true })
+        vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = c.rosewater, bg = "NONE", bold = true })
+        vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = c.rosewater, bg = "NONE", bold = true })
+        vim.api.nvim_set_hl(0, "CmpItemAbbrDefault", { fg = c.rosewater, bg = "NONE", bold = true })
+        vim.api.nvim_set_hl(0, "CmpItemAbbr", { fg = c.subtext0, bg = "NONE", })
 
-        vim.api.nvim_set_hl(0, "CmpItemKindField"        , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindEvent"        , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindVariable"     , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindProperty"     , { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindField", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindEvent", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindVariable", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindProperty", { bg = c.crust, fg = c.text })
 
-        vim.api.nvim_set_hl(0, "CmpItemKindEnumMember"   , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindConstant"     , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindValue"        , { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindConstant", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindValue", { bg = c.crust, fg = c.text })
 
-        vim.api.nvim_set_hl(0, "CmpItemKindConstructor"  , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindOperator"     , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindFunction"     , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindMethod"       , { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { bg = c.crust, fg = c.mauve })
+        vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = c.crust, fg = c.mauve })
+        vim.api.nvim_set_hl(0, "CmpItemKindOperator", { bg = c.crust, fg = c.pink })
+        vim.api.nvim_set_hl(0, "CmpItemKindMethod", { bg = c.crust, fg = c.text })
 
-        vim.api.nvim_set_hl(0, "CmpItemKindKeyword"      , { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = c.crust, fg = c.text })
 
-        vim.api.nvim_set_hl(0, "CmpItemKindReference"    , { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindReference", { bg = c.crust, fg = c.text })
 
         vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindInterface"    , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindStruct"       , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindClass"        , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindEnum"         , { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindInterface", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindStruct", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindClass", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindEnum", { bg = c.crust, fg = c.text })
 
-        vim.api.nvim_set_hl(0, "CmpItemKindSnippet"      , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindModule"       , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindUnit"         , { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindModule", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindUnit", { bg = c.crust, fg = c.text })
 
-        vim.api.nvim_set_hl(0, "CmpItemKindFolder"       , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindColor"        , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindFile"         , { bg = c.crust, fg = c.text })
-        vim.api.nvim_set_hl(0, "CmpItemKindText"         , { bg = c.crust, fg = c.text })
-
+        vim.api.nvim_set_hl(0, "CmpItemKindFolder", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindColor", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindFile", { bg = c.crust, fg = c.text })
+        vim.api.nvim_set_hl(0, "CmpItemKindText", { bg = c.crust, fg = c.text })
     end
-
 }
+

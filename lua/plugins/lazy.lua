@@ -14,24 +14,33 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    require("plugins.catppuccin"),
+    require("plugins.which-key"),
+    require("plugins.leap"),
+
+    require("plugins.mason"),
+    require("plugins.mason-lspconfig"),
+    require("plugins.lspconfig"),
 
     require("plugins.treesitter"),
     require("plugins.lspkind"),
-    require("plugins.mason"),
-    require("plugins.lspconfig"),
+
     require("plugins.cmp"),
     require("plugins.zero"),
-    require("plugins.which-key"),
+
+    require("plugins.conform"),
 
     require("plugins.fugitive"),
-    require("plugins.gitsigns"),
     require("plugins.trouble"),
-
     require("plugins.telescope"),
+    require("plugins.nvim-tree"),
 
-    require("plugins.leap"),
+    require("plugins.lualine"),
+    require("plugins.gitsigns"),
+    require("plugins.barbar"),
+    require("plugins.noice"),
+    require("plugins.catppuccin"),
 }
-local opts = {}
 
+local opts = {}
 require("lazy").setup(plugins, opts)
+
