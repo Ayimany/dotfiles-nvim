@@ -12,14 +12,14 @@ vim.opt.scrolloff        = 8
 
 -- Input
 vim.opt.mousescroll      = "ver:0,hor:0"
-vim.opt.mouse            = nil
+vim.opt.mouse            = ""
 
 -- UI
 vim.opt.nu               = true
 vim.opt.rnu              = true
 vim.opt.wrap             = false
 vim.opt.shm              = "aoOtTF"
-vim.opt.statusline       = "󰈔 %f │  %l:%c │  %Y %m%R"
+vim.opt.statusline       = " 󰈔 %F%= %l:%c %p%% │  %Y %m%R"
 
 -- Edit
 vim.opt.fixeol           = true
@@ -35,9 +35,9 @@ vim.opt.tabstop          = 4
 vim.opt.backup           = false
 vim.opt.swapfile         = false
 vim.opt.undofile         = true
-vim.opt.undodir          = (os.getenv("XDG_DATA_HOME")
-        or (os.getenv("HOME") .. "/local/share"))
-    .. "/nvim/undodir"
+vim.opt.undodir          = (os.getenv("XDG_DATA_HOME") or
+                           (os.getenv("HOME") .. "/local/share"))
+                           .. "/nvim/undodir"
 
 -- Search
 vim.opt.incsearch        = true

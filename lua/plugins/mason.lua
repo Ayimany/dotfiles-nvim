@@ -1,17 +1,28 @@
 return {
     "williamboman/mason.nvim",
-    name = "mason",
+
+    dependencies = {
+        "williamboman/mason-lspconfig.nvim",
+    },
 
     opts = {
-        ui = {
-            border = "rounded",
+        mason = {
+            ui = {
+                icons = {
+                    package_installed   = "✓",
+                    package_pending     = "➜",
+                    package_uninstalled = "✗",
+                }
+            }
+        },
 
-            icons = {
-                package_installed = "",
-                package_pending = "󰔛",
-                package_uninstalled = "",
-            },
+        masonlsp = {
+            ensure_installed = require("data/lsp").servers
         }
-    }
-}
+    },
 
+    config = function(plugin, opts)
+        require("mason").setup(opts.mason)
+        require("mason-lspconfig").setup(opts.masonlsp)
+    end
+}

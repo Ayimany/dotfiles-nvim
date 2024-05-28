@@ -1,11 +1,8 @@
 return {
     "onsails/lspkind.nvim",
-    name = "lspkind",
 
-    config = function()
-        local lspkind = require("lspkind")
-
-        lspkind.init({
+    opts = {
+        lspkind = {
             symbol_map = {
                 Text          = "󰦨",
                 Method        = "󰆧",
@@ -17,9 +14,9 @@ return {
                 Interface     = "",
                 Module        = "󱒌",
                 Property      = "",
-                Unit          = "",
+                Unit          = "󱒌",
                 Value         = "",
-                Enum          = "",
+                Enum          = "",
                 Keyword       = "",
                 Snippet       = "",
                 Color         = "",
@@ -32,7 +29,12 @@ return {
                 Event         = "",
                 Operator      = "",
                 TypeParameter = "",
-            },
-        })
+            }
+        }
+    },
+
+    config = function(plugin, opts)
+        require("lspkind").init(opts.lspkind)
     end
 }
+

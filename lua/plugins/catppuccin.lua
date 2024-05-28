@@ -1,45 +1,49 @@
 return {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
+    "catppuccin/nvim", name = "catppuccin",
 
     opts = {
-        transparent_background = true,
-        show_end_of_buffer = true,
+        catppuccin = {
+            integrations = {
+                lsp_trouble = true,
+                treesitter  = true,
+                which_key   = true,
+                nvimtree    = true,
+                gitsigns    = true,
+                mason       = true,
+                leap        = true,
+                cmp         = true,
 
-        integrations = {
-            treesitter = true,
-            telescope = true,
-            gitsigns = true,
-            mason = true,
-            leap = true,
-            cmp = true,
-
-            native_lsp = {
-                enabled      = true,
-
-                virtual_text = {
-                    errors      = { "italic" },
-                    hints       = { "italic" },
-                    warnings    = { "italic" },
-                    information = { "italic" }
+                telescope = {
+                    enabled = true
                 },
 
-                underlines   = {
-                    errors      = { "underline" },
-                    hints       = { "underline" },
-                    warnings    = { "underline" },
-                    information = { "underline" }
-                },
+                native_lsp = {
+                    enabled = true,
 
-                inlay_hints  = {
-                    background = true
+                    virtual_text = {
+                        errors      = { "italic" },
+                        hints       = { "italic" },
+                        warnings    = { "italic" },
+                        information = { "italic" },
+                    },
+
+                    underlines = {
+                        errors      = { "underline" },
+                        hints       = { "underline" },
+                        warnings    = { "underline" },
+                        information = { "underline" },
+                    },
+
+                    inlay_hints = {
+                        background  = true
+                    }
                 }
             }
         }
     },
 
-    config = function()
+    config = function(plugin, opts)
+        require("catppuccin").setup(opts.catppuccin)
         vim.cmd.colorscheme("catppuccin")
     end
 }
