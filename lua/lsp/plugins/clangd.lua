@@ -1,21 +1,22 @@
 return {
     "p00f/clangd_extensions.nvim",
+    lazy = true,
 
     opts = {
         clangd = {
             inlay_hints = {
                 inline                    = vim.fn.has("nvim-0.10") == 1,
-                priority                  = 100                         ,
-                show_parameter_hints      = true                        ,
-                only_current_line         = false                       ,
-                max_len_align             = false                       ,
-                right_align               = false                       ,
-                right_align_padding       = 7                           ,
-                max_len_align_padding     = 1                           ,
-                only_current_line_autocmd = { "CursorHold" }            ,
-                parameter_hints_prefix    = "<- "                       ,
-                other_hints_prefix        = "=> "                       ,
-                highlight                 = "Comment"                   ,
+                priority                  = 100,
+                show_parameter_hints      = true,
+                only_current_line         = false,
+                max_len_align             = false,
+                right_align               = false,
+                right_align_padding       = 7,
+                max_len_align_padding     = 1,
+                only_current_line_autocmd = { "CursorHold" },
+                parameter_hints_prefix    = "<- ",
+                other_hints_prefix        = "=> ",
+                highlight                 = "Comment",
             },
 
             ast = {
@@ -41,7 +42,7 @@ return {
                 highlights = {
                     detail = "Comment"
                 }
-                
+
             },
 
             memory_usage = {

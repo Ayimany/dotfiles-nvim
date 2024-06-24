@@ -17,7 +17,9 @@ return {
         },
 
         masonlsp = {
-            ensure_installed = require("data/lsp").servers
+            ensure_installed = {
+                "clangd", "lua_ls", "pyright"
+            }
         }
     },
 

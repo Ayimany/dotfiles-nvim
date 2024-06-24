@@ -18,11 +18,10 @@ local plugins = {
     require("plugins.leap"),
 
     require("plugins.mason"),
-    require("plugins.mason-lspconfig"),
     require("plugins.lspconfig"),
 
-    require("plugins.treesitter"),
     require("plugins.lspkind"),
+    require("plugins.treesitter"),
 
     require("plugins.cmp"),
     require("plugins.zero"),
@@ -43,4 +42,3 @@ local plugins = {
 
 local opts = {}
 require("lazy").setup(plugins, opts)
-

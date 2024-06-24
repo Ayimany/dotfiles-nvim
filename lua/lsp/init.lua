@@ -1,2 +1,3 @@
-require("lsp.servers.lua_ls").configure()
-require("lsp.servers.clangd").configure()
+require("lsp.servers.lua_ls")
+require("lsp.servers.clangd")
+require("lsp.servers.pyright")

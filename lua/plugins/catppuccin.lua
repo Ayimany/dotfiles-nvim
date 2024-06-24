@@ -1,8 +1,11 @@
 return {
-    "catppuccin/nvim", name = "catppuccin",
+    "catppuccin/nvim",
+    name = "catppuccin",
 
     opts = {
         catppuccin = {
+            transparent_background = true,
+
             integrations = {
                 lsp_trouble = true,
                 treesitter  = true,
@@ -13,11 +16,11 @@ return {
                 leap        = true,
                 cmp         = true,
 
-                telescope = {
+                telescope   = {
                     enabled = true
                 },
 
-                native_lsp = {
+                native_lsp  = {
                     enabled = true,
 
                     virtual_text = {
@@ -35,7 +38,7 @@ return {
                     },
 
                     inlay_hints = {
-                        background  = true
+                        background = true
                     }
                 }
             }
@@ -47,4 +50,3 @@ return {
         vim.cmd.colorscheme("catppuccin")
     end
 }
-

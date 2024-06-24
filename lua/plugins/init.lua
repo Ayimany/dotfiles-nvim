@@ -35,10 +35,6 @@ local plugins = {
 
 
 local opts = {
-    defaults  = {
-        lazy  = true      ,
-        event = "VeryLazy",
-    }
 }
 
 require("lazy").setup(plugins, opts)
